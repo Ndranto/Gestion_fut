@@ -5,13 +5,14 @@
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+  <ion-list>
+    <ion-item>
+      <ion-label color="primary" floating>Nom</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="number" placeholder="Age"></ion-input>
+    </ion-item>
+    </ion-list>
+  <button id="boutton" (tap)="alertaction()" ion-button full>Full Button</button>
 </ion-content>

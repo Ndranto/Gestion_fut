@@ -1,0 +1,38 @@
+page-login {
+.bg-image{
+    background-image: url('../assets/imgs/login.jpg');
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: 100%; 
+
+}
+
+.no-scroll .scroll-content
+{
+   overflow: hidden; 
+}
+.login{
+    margin-top: 20px;
+}
+.grund{
+    background: none;
+    border-color: white;
+
+}
+input{
+   color:white;
+   size: 20px;
+}
+.Control{
+    margin-left: 100px;
+}
+a{
+    margin-left:40px; 
+}
+button
+{
+    color: red;
+}
+
+
+}
