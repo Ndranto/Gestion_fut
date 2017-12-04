@@ -1,7 +1,7 @@
 <div padding>
   <ion-segment [(ngModel)]="pet">
     <ion-segment-button value="kittens">
-      Kittens
+      Usines
     </ion-segment-button>
     <ion-segment-button value="puppies">
       Clients
@@ -16,13 +16,20 @@
 
 <div [ngSwitch]="pet">
   <ion-list *ngSwitchCase="'puppies'">
-    <ion-list-header>
-    Liste des  Clients
-    </ion-list-header>
+      <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+   
    <div *ngFor="let name of names,let i = index">
-      <a ion-item (click)="openModal({charNum: i })">
+     <ion-item>
+      <ion-thumbnail item-start>
+          <img src="../assets/imgs/profile.png">
+        </ion-thumbnail>
+      <a ion-item >
       {{name}}
       </a>
+      <h2>My Neighbor Totoro</h2>
+      <p>Hayao Miyazaki • 1988</p>
+      <button ion-button clear item-end (click)="openModal({charNum: i })">View</button>
+    </ion-item>
     </div>
   </ion-list>
 
