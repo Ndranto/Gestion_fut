@@ -1,22 +1,38 @@
-<ion-header>
-  <ion-toolbar>
+<div padding>
+  <ion-segment [(ngModel)]="pet">
+    <ion-segment-button value="kittens">
+      Kittens
+    </ion-segment-button>
+    <ion-segment-button value="puppies">
+      Clients
+    </ion-segment-button>
     <ion-buttons start>
       <button ion-button icon-only>
         <ion-icon name="create"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-segment>
-      <ion-segment-button value="new">
-        New
-      </ion-segment-button>
-      <ion-segment-button value="hot">
-        Hot
-      </ion-segment-button>
-    </ion-segment>
-    <ion-buttons end>
-      <button ion-button icon-only>
-        <ion-icon name="more"></ion-icon>
-      </button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
+  </ion-segment>
+</div>
+
+<div [ngSwitch]="pet">
+  <ion-list *ngSwitchCase="'puppies'">
+    <ion-list-header>
+    Liste des  Clients
+    </ion-list-header>
+   <div *ngFor="let name of names,let i = index">
+      <a ion-item (click)="openModal({charNum: i })">
+      {{name}}
+      </a>
+    </div>
+  </ion-list>
+
+  <ion-list *ngSwitchCase="'kittens'">
+    <ion-item>
+      <ion-thumbnail item-start>
+        <img src="img/thumbnail-kitten-1.jpg">
+      </ion-thumbnail>
+      <h2>Luna</h2>
+    </ion-item>
+    ...
+  </ion-list>
+</div>
