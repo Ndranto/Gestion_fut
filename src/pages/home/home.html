@@ -1,9 +1,9 @@
 <div padding>
-  <ion-segment [(ngModel)]="pet">
+  <ion-segment [(ngModel)]="Option">
     <ion-segment-button value="kittens">
       Usines
     </ion-segment-button>
-    <ion-segment-button value="puppies">
+    <ion-segment-button value="Client">
       Clients
     </ion-segment-button>
     <ion-buttons start>
@@ -14,14 +14,14 @@
   </ion-segment>
 </div>
 
-<div [ngSwitch]="pet">
-  <ion-list *ngSwitchCase="'puppies'">
+<div [ngSwitch]="Option">
+  <ion-list *ngSwitchCase="'Client'">
       <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
    
    <div *ngFor="let name of names,let i = index">
      <ion-item>
       <ion-thumbnail item-start>
-          <img src="../assets/imgs/profile.png">
+          <img src="../assets/imgs/Profile2.png">
         </ion-thumbnail>
       <a ion-item >
       {{name}}
@@ -40,6 +40,12 @@
       </ion-thumbnail>
       <h2>Luna</h2>
     </ion-item>
-    ...
+  
   </ion-list>
 </div>
+<ion-fab right bottom>
+    <button ion-fab mini><ion-icon name="apps"></ion-icon></button>
+    <ion-fab-list side="top">
+      <button ion-fab (click)="ModalAddCustomer()"><ion-icon name="add"></ion-icon></button>
+     </ion-fab-list>
+  </ion-fab>

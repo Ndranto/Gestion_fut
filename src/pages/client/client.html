@@ -7,21 +7,33 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Client</ion-title>
+    
+     <ion-icon name="arrow-dropleft-circle"   (click)="pushPage()"><ion-item>Return back</ion-item></ion-icon>
+     Client
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-    <ion-fab right bottom>
-        <button ion-fab mini><ion-icon name="apps"></ion-icon></button>
-        <ion-fab-list side="top">
-          <button ion-fab><ion-icon name="add"></ion-icon></button>
-          <button ion-fab><ion-icon name="logo-twitter"></ion-icon></button>
-          <button ion-fab><ion-icon name="logo-vimeo"></ion-icon></button>
-          <button ion-fab><ion-icon name="logo-googleplus"></ion-icon></button>
-        </ion-fab-list>
-      </ion-fab>
-
+    <form [formGroup]="todo" (ngSubmit)="logForm()">
+        <ion-item>
+          <ion-label>Nom</ion-label>
+          <ion-input type="text" formControlName="Name"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>Adresse</ion-label>
+            <ion-input type="text" formControlName="Adress"></ion-input>
+          </ion-item>
+          <ion-item>
+              <ion-label>Téléphone</ion-label>
+              <ion-input type="text" formControlName="Telephone"></ion-input>
+            </ion-item>
+        <ion-item>
+          <ion-label>Description</ion-label>
+          <ion-textarea formControlName="description"></ion-textarea>
+        </ion-item>
+        <button ion-button type="submit" [disabled]="!todo.valid">Valider</button>
+      </form>
+    
 </ion-content>

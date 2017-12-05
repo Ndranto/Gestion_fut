@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController,ModalController, AlertController, Platform, NavParams, ViewController } from 'ionic-angular';
+import { NavController,ModalController, AlertController, Platform, NavParams, ViewController,LoadingController } from 'ionic-angular';
+import { ClientPage } from '../client/client';
 
 @Component({
   selector: 'page-home',
@@ -7,27 +8,47 @@ import { NavController,ModalController, AlertController, Platform, NavParams, Vi
 })
 export class HomePage {
  names : any = true;
-  constructor(public navCtrl: NavController,public alertCtrl: AlertController,public modalCtrl: ModalController) {
+ Option :string;
+  constructor(public navCtrl: NavController,public alertCtrl: AlertController,public modalCtrl: ModalController,public loadingCtrl: LoadingController) {
   console.log("Bonjour");
+  
+  this.Option="Client";
 
   this.initializeItems();
   }
-  alertaction():void {
-    let alert = this.alertCtrl.create({
-    title:"alert ! ",
-    subTitle:'ionic projet',
-    buttons:['ok']
 
-    });
-alert.present();
+  // Example of alert
+
+ // alertaction():void {
+   // let alert = this.alertCtrl.create({
+    //title:"alert ! ",
+    //subTitle:'ionic projet',
+    //buttons:['ok']
+
+    //});
+//alert.present();
+  //}
+
+  // list of customers
+  initializeItems() 
+  {
+    this.names =['Ndranto','Jennifer','Tendry']
   }
-  initializeItems() {
-    this.names =['Ndranto','Jennifer','Tendry']}
+
+  //Function talk detail of each customer
   openModal(characterNum) {
     
         let modal = this.modalCtrl.create(ModalContentPage, characterNum);
         modal.present();
       }
+
+ ModalAddCustomer() {
+        
+      let modal = this.modalCtrl.create(ClientPage);
+       modal.present();
+          }
+
+   // Key event search client   
       getItems(ev: any) {
         // Reset items back to all of the items
         this.initializeItems();
@@ -42,10 +63,23 @@ alert.present();
           })
         }
 }
+
+//Loading page
+presentLoading() {
+  let loader = this.loadingCtrl.create({
+    content: "Please wait...",
+    duration: 3000
+  });
+  loader.present();
+}
 }
 @Component({
   templateUrl:'modal-content.html' 
 })
+
+
+
+//Detail of customer
 export class ModalContentPage {
   character;
 
