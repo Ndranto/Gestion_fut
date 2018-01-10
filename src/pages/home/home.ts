@@ -9,27 +9,17 @@ import { ClientPage } from '../client/client';
 export class HomePage {
  names : any = true;
  Option :string;
+ images = ['1.jpg','2.jpg','3.jpg'];
   constructor(public navCtrl: NavController,public alertCtrl: AlertController,public modalCtrl: ModalController,public loadingCtrl: LoadingController) {
   console.log("Bonjour");
+  
   
   this.Option="Client";
 
   this.initializeItems();
   }
 
-  // Example of alert
 
- // alertaction():void {
-   // let alert = this.alertCtrl.create({
-    //title:"alert ! ",
-    //subTitle:'ionic projet',
-    //buttons:['ok']
-
-    //});
-//alert.present();
-  //}
-
-  // list of customers
   initializeItems() 
   {
     this.names =['Ndranto','Jennifer','Tendry']
@@ -127,4 +117,5 @@ export class ModalContentPage {
     this.viewCtrl.dismiss();
   }
 }
+
 

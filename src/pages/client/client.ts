@@ -33,7 +33,7 @@ export class ClientPage {
   logForm(){
     console.log(this.todo.value)
   }
-
+//return in preview page
   pushPage() {
     this.viewCtrl.dismiss();
     this.appCtrl.getRootNav().push(HomePage);

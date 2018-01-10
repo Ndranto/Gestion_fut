@@ -35,12 +35,18 @@
 
   <ion-list *ngSwitchCase="'kittens'">
     <ion-item>
-      <ion-thumbnail item-start>
-        <img src="img/thumbnail-kitten-1.jpg">
-      </ion-thumbnail>
-      <h2>Luna</h2>
-    </ion-item>
-  
+      <ion-slides class="image" style="width:100%; height:200px" >
+        <ion-slide *ngFor="let img of images">
+          <div class="inner">
+            <ion-avatar item-start>
+              <img src="../assets/imgs/{{img}}">
+            </ion-avatar>
+            <h2>Cher</h2>
+            <p>Ugh. As if.</p>
+          </div>
+      </ion-slide>
+      </ion-slides>
+  </ion-item>
   </ion-list>
 </div>
 <ion-fab right bottom>
@@ -48,4 +54,4 @@
     <ion-fab-list side="top">
       <button ion-fab (click)="ModalAddCustomer()"><ion-icon name="add"></ion-icon></button>
      </ion-fab-list>
-  </ion-fab>
+</ion-fab>
