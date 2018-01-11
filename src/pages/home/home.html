@@ -1,18 +1,4 @@
-<div padding>
-  <ion-segment [(ngModel)]="Option">
-    <ion-segment-button value="kittens">
-      Usines
-    </ion-segment-button>
-    <ion-segment-button value="Client">
-      Clients
-    </ion-segment-button>
-    <ion-buttons start>
-      <button ion-button icon-only>
-        <ion-icon name="create"></ion-icon>
-      </button>
-    </ion-buttons>
-  </ion-segment>
-</div>
+
 
 <div [ngSwitch]="Option">
   <ion-list *ngSwitchCase="'Client'">

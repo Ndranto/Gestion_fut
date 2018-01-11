@@ -5,9 +5,11 @@ import 'rxjs/add/operator/map';
 
 
 export class CatalogueFut {
-   futId: number;
+   
+    futId: number;
    futDescrCatalogueFut: string;
    futNomCatalogueFut: string;
+
    constructor(values: Object = {}) {
         Object.assign(this, values);
    }

@@ -15,6 +15,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { RestfutProvider } from '../providers/restfut/restfut';
+import { ScrollableTabs } from '../components/scrollable-tabs';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { RestfutProvider } from '../providers/restfut/restfut';
     ClientPage,
     ModalContentPage,
     RestPage,
+    ScrollableTabs
     
 
   ],
@@ -48,6 +50,7 @@ import { RestfutProvider } from '../providers/restfut/restfut';
     ClientPage,
     ModalContentPage,
     RestPage,
+    
     
   
   ],

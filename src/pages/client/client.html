@@ -4,36 +4,46 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
 
-  <ion-navbar>
-    
-     <ion-icon name="arrow-dropleft-circle"   (click)="pushPage()"><ion-item>Return back</ion-item></ion-icon>
-     Client
-  </ion-navbar>
-
-</ion-header>
-
-
-<ion-content padding>
-    <form [formGroup]="todo" (ngSubmit)="logForm()">
-        <ion-item>
-          <ion-label>Nom</ion-label>
-          <ion-input type="text" formControlName="Name"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label>Adresse</ion-label>
-            <ion-input type="text" formControlName="Adress"></ion-input>
-          </ion-item>
-          <ion-item>
-              <ion-label>Téléphone</ion-label>
-              <ion-input type="text" formControlName="Telephone"></ion-input>
-            </ion-item>
-        <ion-item>
-          <ion-label>Description</ion-label>
-          <ion-textarea formControlName="description"></ion-textarea>
-        </ion-item>
-        <button ion-button type="submit" [disabled]="!todo.valid">Valider</button>
-      </form>
-    
-</ion-content>
+<div [ngSwitch]="Option">
+    <ion-list *ngSwitchCase="'Client'">
+        <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+     
+     <div *ngFor="let name of names,let i = index">
+       <ion-item>
+        <ion-thumbnail item-start>
+            <img src="../assets/imgs/Profile2.png">
+          </ion-thumbnail>
+        <a ion-item >
+        {{name}}
+        </a>
+        <h2>My Neighbor Totoro</h2>
+        <p>Hayao Miyazaki • 1988</p>
+        <button ion-button clear item-end (click)="openModal({charNum: i })">View</button>
+      </ion-item>
+      </div>
+    </ion-list>
+  
+    <ion-list *ngSwitchCase="'kittens'">
+      <ion-item>
+        <ion-slides class="image" style="width:100%; height:200px" >
+          <ion-slide *ngFor="let img of images">
+            <div class="inner">
+              <ion-avatar item-start>
+                <img src="../assets/imgs/{{img}}">
+              </ion-avatar>
+              <h2>Cher</h2>
+              <p>Ugh. As if.</p>
+            </div>
+        </ion-slide>
+        </ion-slides>
+    </ion-item>
+    </ion-list>
+  </div>
+  <ion-fab right bottom>
+      <button ion-fab mini><ion-icon name="apps"></ion-icon></button>
+      <ion-fab-list side="top">
+        <button ion-fab (click)="ModalAddCustomer()"><ion-icon name="add"></ion-icon></button>
+       </ion-fab-list>
+  </ion-fab>
+  

@@ -1,6 +1,73 @@
-<ion-tabs color="toolbar">
-  <ion-tab [root]="tab1Root" tabTitle="Home" tabIcon="home"></ion-tab>
-  <ion-tab [root]="tab2Root" tabTitle="About" tabIcon="information-circle"></ion-tab>
-  <ion-tab [root]="tab3Root" tabTitle="Contact" tabIcon="contacts"></ion-tab>
-  <ion-tab [root]="tab4Root" tabTitle="Contact" tabIcon="contacts"></ion-tab>
+<style>
+	.tabbar::after {
+		content: none;
+	}
+</style>
+<ion-header>
+  <ion-title>
+    Ic
+  </ion-title>
+  </ion-header>
+<ion-tabs  #ionTabs [scrollable-tabs]="ionTabs" [opts]="scrollableTabsopts" selectedIndex='0' color="{{tabsColor}}" mode='{{tabsMode}}'tabsHighlight="true" tabsPlacement="{{tabsPlacement}}">
+  <ion-tab [root]="AboutRoot" [show]='tabToShow[0]'  tabTitle="Home" tabIcon="home"></ion-tab>
+  <ion-tab [root]="HomePage" [show]='tabToShow[1]' tabTitle="Client" tabIcon="information-circle"></ion-tab>
+  <ion-tab [root]="ContactPage" [show]='tabToShow[2]' tabTitle="Stockage" tabIcon="contacts"></ion-tab>
+  <ion-tab [root]="ContactPage" [show]='tabToShow[2]' tabTitle="Stockage" tabIcon="contacts"></ion-tab>
+   <ion-tab [root]="ContactPage" [show]='tabToShow[2]' tabTitle="Stockage" tabIcon="contacts"></ion-tab>
+  <ion-tab [root]="RestPage" [show]='tabToShow[3]' tabTitle="Catalogue" tabIcon="contacts"></ion-tab>
 </ion-tabs>
+
+
+<!--<ion-list [style.marginTop.px]="200">
+  <ion-item>
+    <ion-label>Color</ion-label>
+    <ion-select [(ngModel)]="tabsColor">
+      <ion-option value="default">Default</ion-option>
+      <ion-option value="primary">Primary</ion-option>
+      <ion-option value="secondary">Secondary</ion-option>
+      <ion-option value="danger">Danger</ion-option>
+      <ion-option value="dark">Dark</ion-option>
+      <ion-option value="light">Light</ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>Tabs Mode</ion-label>
+    <ion-select [(ngModel)]="tabsMode" (ionChange)="presentChangeOrendationToast()">
+      <ion-option value="md">Material Design</ion-option>
+      <ion-option value="ios">ios</ion-option>
+      <ion-option value="wp">Windows Phone</ion-option>n>
+    </ion-select>
+  </ion-item>
+</ion-list>
+<ion-grid>
+  <ion-item>
+    Demonstarte ion-tab [show] property.
+  </ion-item>
+  <ion-row>
+    <ion-col width-50>
+      <ion-list>
+        <ion-item>
+          <ion-label>Home</ion-label>
+          <ion-toggle [(ngModel)]="tabToShow[0]" (ionChange)='refreshScrollbarTabs()'></ion-toggle>
+        </ion-item>
+        <ion-item>
+          <ion-label>Calendar</ion-label>
+          <ion-toggle [(ngModel)]="tabToShow[1]" (ionChange)='refreshScrollbarTabs()'></ion-toggle>
+        </ion-item>
+        <ion-item>
+          <ion-label>Camera</ion-label>
+          <ion-toggle [(ngModel)]="tabToShow[2]" (ionChange)='refreshScrollbarTabs()'></ion-toggle>
+        </ion-item>
+      </ion-list>
+    </ion-col>
+    <ion-col width-50>
+      <ion-list>
+        <ion-item>
+          <ion-label>Folder</ion-label>
+          <ion-toggle [(ngModel)]="tabToShow[3]" (ionChange)='refreshScrollbarTabs()'></ion-toggle>
+        </ion-item>
+      
+      </ion-list>
+    </ion-col>
+  </ion-row>
+</ion-grid>-->
