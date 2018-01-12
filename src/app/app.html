@@ -1,20 +1,10 @@
 
 <ion-header>
-    <ion-navbar primary>
-  
-      <ion-title>Gestion fut</ion-title>
-  
-      <ion-buttons end>
-        <button hideWhen="cordova" (click)="save()"><ion-icon md="md-add" ios="ios-add"></ion-icon></button>
-        <button (click)="search()"><ion-icon md="md-search" ios="ios-search-outline"></ion-icon></button>
-        <button (click)="notifications()"><ion-icon md="md-notifications" ios="ios-notifications-outline"></ion-icon></button>
-        <button (click)="settings()"><ion-icon md="md-settings" ios="ios-settings-outline"></ion-icon></button>
-      </ion-buttons>
-      <ion-tabs  tabsPlacement="top">
-            <ion-searchbar ></ion-searchbar>
-      </ion-tabs>
-    </ion-navbar>
-   
-  </ion-header>
-  <ion-nav [root]="rootPage"></ion-nav>
+  <ion-toolbar color="dark">
 
+  </ion-toolbar>
+  </ion-header>
+<ion-content>
+  <ion-nav [root]="rootPage"></ion-nav>
+    
+</ion-content>

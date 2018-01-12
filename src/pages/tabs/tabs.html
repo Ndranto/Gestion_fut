@@ -3,17 +3,16 @@
 		content: none;
 	}
 </style>
-<ion-header>
-  <ion-title>
-    Ic
-  </ion-title>
-  </ion-header>
+
+
+
+
 <ion-tabs  #ionTabs [scrollable-tabs]="ionTabs" [opts]="scrollableTabsopts" selectedIndex='0' color="{{tabsColor}}" mode='{{tabsMode}}'tabsHighlight="true" tabsPlacement="{{tabsPlacement}}">
-  <ion-tab [root]="AboutRoot" [show]='tabToShow[0]'  tabTitle="Home" tabIcon="home"></ion-tab>
-  <ion-tab [root]="HomePage" [show]='tabToShow[1]' tabTitle="Client" tabIcon="information-circle"></ion-tab>
-  <ion-tab [root]="ContactPage" [show]='tabToShow[2]' tabTitle="Stockage" tabIcon="contacts"></ion-tab>
-  <ion-tab [root]="ContactPage" [show]='tabToShow[2]' tabTitle="Stockage" tabIcon="contacts"></ion-tab>
-   <ion-tab [root]="ContactPage" [show]='tabToShow[2]' tabTitle="Stockage" tabIcon="contacts"></ion-tab>
+  <ion-tab [root]="HomePage" [show]='tabToShow[0]'  tabTitle="Home" tabIcon="home"></ion-tab>
+  <ion-tab [root]="ClientPage" [show]='tabToShow[1]' tabTitle="Client" tabIcon="information-circle"></ion-tab>
+  <ion-tab [root]="AboutRoot" [show]='tabToShow[2]' tabTitle="Aboot" tabIcon="contacts"></ion-tab>
+  <ion-tab [root]="MagasinPage" [show]='tabToShow[2]' tabTitle="Magasin" tabIcon="contacts"></ion-tab>
+   <ion-tab [root]="TransportPage" [show]='tabToShow[2]' tabTitle="Transport" tabIcon="contacts"></ion-tab>
   <ion-tab [root]="RestPage" [show]='tabToShow[3]' tabTitle="Catalogue" tabIcon="contacts"></ion-tab>
 </ion-tabs>
 

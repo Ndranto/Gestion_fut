@@ -1,0 +1,34 @@
+<ion-header>
+        
+          <ion-navbar>
+            
+             <ion-icon name="arrow-dropleft-circle"   (click)="pushPage()"><ion-item>Return back</ion-item></ion-icon>
+            
+          </ion-navbar>
+        
+        </ion-header>
+        
+        
+        <ion-content padding>
+            <form [formGroup]="todo" (ngSubmit)="logForm()">
+                <ion-item>
+                  <ion-label>Nom</ion-label>
+                  <ion-input type="text" formControlName="Name"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label>Adresse</ion-label>
+                    <ion-input type="text" formControlName="Adress"></ion-input>
+                  </ion-item>
+                  <ion-item>
+                      <ion-label>Téléphone</ion-label>
+                      <ion-input type="text" formControlName="Telephone"></ion-input>
+                    </ion-item>
+                <ion-item>
+                  <ion-label>Description</ion-label>
+                  <ion-textarea formControlName="description"></ion-textarea>
+                </ion-item>
+                <button ion-button type="submit" [disabled]="!todo.valid">Valider</button>
+              </form>
+            
+        </ion-content>
+        

@@ -7,6 +7,8 @@ import { RestPage } from '../rest/rest';
 import { LoginPage } from '../login/login';
 import { ScrollableTabs } from '../../components/scrollable-tabs';
 import { ClientPage } from '../client/client';
+import {MagasinPage} from '../magasin/magasin';
+import {TransportPage} from '../transport/transport';
 @Component({
   templateUrl: 'tabs.html'
 })
@@ -16,7 +18,8 @@ export class TabsPage {
   ContactPage: any = ContactPage;
   RestPage: any = RestPage;
   ClientPage : any = ClientPage;
-  
+  MagasinPage : any = MagasinPage;
+  TransportPage: any =TransportPage;
 
   tabsColor: string = "default";
   tabsMode: string = "md";

@@ -37,10 +37,15 @@ $colors: (
   primary:    #488aff,
   secondary:  #32db64,
   danger:     #f53d3d,
+  hist:     #4d4a4a,
   light:      #f4f4f4,
   dark:       #222,
-  toolbar : #475865
+  twitter: (
+    base: #55acee,
+    contrast: #ffffff
+  )
 );
+
 
 
 // App iOS Variables

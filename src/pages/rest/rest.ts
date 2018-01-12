@@ -25,16 +25,16 @@ export class RestPage   {
   catalogue :any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient,public restfutProvider:RestfutProvider) {
-   this.ngOnInit()
+   this. getCatalogueFit()
   }
  
   ionViewDidLoad() {
     console.log('ionViewDidLoad RestPage');
   }
-  ngOnInit(){
+  getCatalogueFit(){
     this.restfutProvider.getListCatalogue()
     .then(data =>{this.catalogue = data;
-     alert(this.catalogue)});
+   });
   
   }
 }
