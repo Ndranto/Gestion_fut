@@ -1,15 +1,15 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { IonicApp, IonicModule, IonicErrorHandler,IonicPage, NavController, NavParams, App, ViewController,ModalController, AlertController, Platform, LoadingController  } from 'ionic-angular';
-import {Validators, FormBuilder, FormGroup} from '@angular/forms'
+import { IonicApp, IonicModule, IonicErrorHandler,IonicPage, NavController, NavParams, App, ViewController, Platform  } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { AboutPage } from '../pages/about/about';
 import { RestPage } from '../pages/rest/rest';
+import { ModalPageModule } from '../pages/modal/modal.module';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { MagasinPage } from '../pages/magasin/magasin';
-import { ModalContentPage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
+import {SituationMagasinPage} from '../pages/situation-magasin/situation-magasin'
 import { LoginPage } from '../pages/login/login';
  import { ClientPage } from '../pages/client/client';
  import { TransportPage } from '../pages/transport/transport';
@@ -24,11 +24,15 @@ import { SituationFutProvider } from '../providers/situation-fut/situation-fut';
 import { AchatFutProvider } from '../providers/achat-fut/achat-fut';
 import { DetailFusProvider } from '../providers/detail-fus/detail-fus';
 import { MagasinStockageProvider } from '../providers/magasin-stockage/magasin-stockage';
+import { InventairePage} from '../pages/inventaire/inventaire';
 import { VilleProvider } from '../providers/ville/ville';
 import { TransportsProvider } from '../providers/transports/transports';
 import { CaracteristiqueInventaireProvider } from '../providers/caracteristique-inventaire/caracteristique-inventaire';
 import { StockageHistoryProvider } from '../providers/stockage-history/stockage-history';
 import { ClientProvider } from '../providers/client/client';
+import { SituationstockageProvider } from '../providers/situationstockage/situationstockage';
+import { BonProvider } from '../providers/bon/bon';
+import { BonPage } from '../pages/bon/bon';
 
 
 @NgModule({
@@ -41,18 +45,20 @@ import { ClientProvider } from '../providers/client/client';
     LoginPage,
     ClientPage,
     MagasinPage,
-    ModalContentPage,
     RestPage,
     TransportPage,
-    ScrollableTabs
-    
-
+    InventairePage,
+    SituationMagasinPage,
+    ScrollableTabs,
+    BonPage,
   ],
   imports: [ 
     BrowserModule,
     HttpClientModule,
     HttpModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    ModalPageModule,
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -63,13 +69,13 @@ import { ClientProvider } from '../providers/client/client';
     TabsPage,
     LoginPage,
     ClientPage,
-    ModalContentPage,
     RestPage,
     MagasinPage,
-    TransportPage
-    
-    
-  
+    InventairePage,
+    SituationMagasinPage,
+    TransportPage,
+    BonPage,
+
   ],
   providers: [
     StatusBar,
@@ -85,8 +91,9 @@ import { ClientProvider } from '../providers/client/client';
     TransportsProvider,
     CaracteristiqueInventaireProvider,
     StockageHistoryProvider,
-    ClientProvider
-   
+    ClientProvider,
+    SituationstockageProvider,
+    BonProvider,
   ]
 })
 export class AppModule {}

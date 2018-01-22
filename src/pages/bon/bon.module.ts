@@ -1,17 +1,13 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { RestPage } from './rest';
-
-
-
+import { BonPage } from './bon';
 
 @NgModule({
   declarations: [
-    RestPage,
+    BonPage,
   ],
   imports: [
-    IonicPageModule.forChild(RestPage),
- 
+    IonicPageModule.forChild(BonPage),
   ],
 })
-export class RestPageModule {}
+export class BonPageModule {}

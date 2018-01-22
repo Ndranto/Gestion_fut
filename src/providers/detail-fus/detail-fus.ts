@@ -13,5 +13,5 @@ export class DetailFusProvider {
   constructor(public http: HttpClient) {
     console.log('Hello DetailFusProvider Provider');
   }
-
+   
 }

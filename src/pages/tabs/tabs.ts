@@ -1,4 +1,4 @@
-import { Component , ViewChild } from '@angular/core';
+import { Component  } from '@angular/core';
 import { ToastController } from 'ionic-angular';
 import { AboutPage } from '../about/about';
 import { ContactPage } from '../contact/contact';
@@ -9,6 +9,9 @@ import { ScrollableTabs } from '../../components/scrollable-tabs';
 import { ClientPage } from '../client/client';
 import {MagasinPage} from '../magasin/magasin';
 import {TransportPage} from '../transport/transport';
+import {InventairePage} from '../inventaire/inventaire';
+import {BonPage} from '../bon/bon';
+
 @Component({
   templateUrl: 'tabs.html'
 })
@@ -20,6 +23,8 @@ export class TabsPage {
   ClientPage : any = ClientPage;
   MagasinPage : any = MagasinPage;
   TransportPage: any =TransportPage;
+  Inventaire: any = InventairePage;
+  bonpage: any = BonPage;
 
   tabsColor: string = "default";
   tabsMode: string = "md";

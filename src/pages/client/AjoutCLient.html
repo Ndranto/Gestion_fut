@@ -10,6 +10,7 @@
         
         
         <ion-content padding>
+          <ion-card>
             <form [formGroup]="todo" (ngSubmit)="logForm()">
                 <ion-item>
                   <ion-label>Nom</ion-label>
@@ -29,6 +30,6 @@
                 </ion-item>
                 <button ion-button type="submit" [disabled]="!todo.valid">Valider</button>
               </form>
-            
+            </ion-card>
         </ion-content>
         

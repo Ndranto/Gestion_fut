@@ -14,7 +14,7 @@ export class CaracteristiqueInventaireProvider {
     console.log('Hello CaracteristiqueInventaireProvider Provider');
   }
   
-  baseUrl:string = 'http://localhost:8081/';
+  baseUrl:string = 'http://192.168.1.114:8081/';
   getListCatalogue(){
     
  

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams , LoadingController} from 'ionic-angular';
-import {MagasinStockageProvider} from '../../providers/magasin-stockage/magasin-stockage'
+import {MagasinStockageProvider} from '../../providers/magasin-stockage/magasin-stockage';
 
 /**
  * Generated class for the MagasinPage page.

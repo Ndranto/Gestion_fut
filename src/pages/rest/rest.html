@@ -6,14 +6,126 @@
 -->
 
 
-
+<!--
 <ion-content>
-  <ion-list padding>
-    <h1>Catalogue des Futs</h1>
-    <ion-item *ngFor="let cat of catalogue">
-      <h2>{{cat.futId}}</h2>  
-      <li>{{cat.futDescrCatalogueFut}}</li> 
-      <li>{{cat.futNomCatalogueFut}}</li> 
+
+<ion-list>
+  <ion-list-header>
+    Catalogue des Futs
+  </ion-list-header>
+
+  <ion-item  *ngFor="let cat of catalogue">
+    <ion-label>{{cat.futNomCatalogueFut}}</ion-label>
+    <button ion-button color="danger"  outline item-end icon-left>
+        <ion-icon name="edit"></ion-icon>
+         Modifier</button>
+    <button ion-button outline color ="secondary"item-end icon-left>
+        <ion-icon name="information"></ion-icon>
+      Details
+    </button>
     </ion-item>
   </ion-list>
+  <ion-fab right bottom>
+      <button ion-fab mini><ion-icon name="apps"></ion-icon></button>
+      <ion-fab-list side="top">
+        <button ion-fab (click)="ModalAddCustomer()"><ion-icon name="add"></ion-icon></button>
+       </ion-fab-list>
+  </ion-fab>
+</ion-content>
+-->
+
+<ion-content>
+    <ion-navbar>
+        <ion-title>
+          Segments
+        </ion-title>
+      </ion-navbar>
+    
+      <ion-toolbar>
+        <ion-segment [(ngModel)]="pet" color="secondary">
+          <ion-segment-button value="puppies">
+            Catalogue
+          </ion-segment-button>
+          <ion-segment-button value="kittens">
+            Nouveau 
+          </ion-segment-button>
+          <ion-segment-button value="ducklings">
+            Nou
+          </ion-segment-button>
+        </ion-segment>
+      </ion-toolbar>
+
+  <div [ngSwitch]="pet">
+   
+      <ion-card *ngSwitchCase="'puppies'">
+        <ion-list *ngFor="let cat of catalogue" >
+        <ion-item>
+            <h2>{{cat.futNomCatalogueFut}}</h2>
+            <p>{{cat.futId}}</p>
+            <button (click)="openModal(cat.futId)"  ion-button color="danger" outline item-end icon-left name="Modification">
+                <ion-icon name="edit"></ion-icon>
+               Modifier
+              </button>
+            <button (click) = "openModal()"ion-button outline  color ="secondary"item-end icon-left >
+                <ion-icon name="information"></ion-icon>
+              Details
+            </button>
+            </ion-item>
+          </ion-list>
+      </ion-card>
+ 
+
+    <ion-list *ngSwitchCase="'kittens'">
+      <ion-card>
+        <ion-card-content>
+          <form [formGroup]="todo" (ngSubmit)="Ajout()">
+              <ion-item>
+                <ion-label>Nom du fut</ion-label>
+                <ion-input type="text" formControlName="futNomCatalogueFut"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label>Description du fut</ion-label>
+                <ion-textarea formControlName="futDescrCatalogueFut"></ion-textarea>
+              </ion-item>
+              <button ion-button type="submit" [disabled]="!todo.valid">Valider</button>
+              <button ion-button type="danger" [disabled]="!todo.valid">Cancel</button>
+            </form>
+           
+        </ion-card-content>
+         
+        </ion-card>
+        <ion-card>
+        <ion-card-content ng-if="postlist.response != null">
+          <b>{{postList.response}}</b>
+          </ion-card-content>
+          </ion-card>
+      </ion-list>
+
+    <ion-list *ngSwitchCase="'ducklings'">
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/img/thumbnail-duckling-1.jpg">
+        </ion-thumbnail>
+        <h2>Daffy</h2>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/img/thumbnail-duckling-2.jpg">
+        </ion-thumbnail>
+        <h2>Huey</h2>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/img/thumbnail-duckling-3.jpg">
+        </ion-thumbnail>
+        <h2>Dewey</h2>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/img/thumbnail-duckling-4.jpg">
+        </ion-thumbnail>
+        <h2>Louie</h2>
+      </ion-item>
+    </ion-list>
+  </div>
 </ion-content>
