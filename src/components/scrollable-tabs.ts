@@ -12,7 +12,7 @@ export class ScrollableTabs implements AfterViewInit {
   @Input('opts') opts: any = {};
 
   currentTabIndex: number;
-  tabs: Tab[] = [];
+  tabs: Tab[] = []; 
   nativeTabbar: HTMLElement;
 
   constructor(public elemRef: ElementRef, public renderer: Renderer) {

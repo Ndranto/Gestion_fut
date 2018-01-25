@@ -50,6 +50,7 @@ CatalogueFut :any;
   public createProduct(product: any) {         
     const body = new HttpParams().set("futNomCatalogueFut", product.value.futNomCatalogueFut).set("futDescrCatalogueFut", product.value.futDescrCatalogueFut);
     console.log(body);
+ 
   //let options = new RequestOptions({ headers: headers });
       return new Promise((resolve) => {
         this.http.post(this.baseUrl+'Jax-rs_Gestion_Fut/fut/addForm', body.toString(), {headers :new HttpHeaders().set("Content-Type", "application/x-www-form-urlencoded; charset=utf-8"),responseType: 'text'})
@@ -88,7 +89,30 @@ CatalogueFut :any;
 
   // Sending a PUT request to /products/:id
   public updateProduct(product:any){
+
+    const body = new HttpParams().set("futNomCatalogueFut", product.value.futNomCatalogueFut).set("futDescrCatalogueFut", product.value.futDescrCatalogueFut);
+    console.log(body);
+ 
+  //let options = new RequestOptions({ headers: headers });
+      return new Promise((resolve) => {
+        this.http.post(this.baseUrl+'Jax-rs_Gestion_Fut/fut/Update/'+product.value.futId,body.toString(),{headers :new HttpHeaders().set("Content-Type", "application/x-www-form-urlencoded; charset=utf-8"),responseType: 'text'})
+        .subscribe(data => {
+          resolve(data);
+          this.data = data;
+         alert("mety");
+       }, (err) => {
+            
+            alert(err.message);
+            console.log('Error: ' + err.error);
+            console.log('Name: ' + err.name);
+            console.log('Message: ' + err.message);
+            console.log('Status: ' + err.status);
+            console.log('erreur: ' + err);
+          });
+         
+      });
   }
+  
 /*
   // Sending a DELETE request to /products/:id
   public deleteProductById(productId: number) { 

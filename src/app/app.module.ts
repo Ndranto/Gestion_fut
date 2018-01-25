@@ -1,7 +1,9 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { IonicApp, IonicModule, IonicErrorHandler,IonicPage, NavController, NavParams, App, ViewController, Platform  } from 'ionic-angular';
+import { IonicApp, IonicModule, IonicErrorHandler  } from 'ionic-angular';
 import { MyApp } from './app.component';
+import { PopoverPage } from './app.component';
+import { PopoverPage2 } from '../components/nouveau-inventaire/nouveau-inventaire';
 import { AboutPage } from '../pages/about/about';
 import { RestPage } from '../pages/rest/rest';
 import { ModalPageModule } from '../pages/modal/modal.module';
@@ -33,6 +35,8 @@ import { ClientProvider } from '../providers/client/client';
 import { SituationstockageProvider } from '../providers/situationstockage/situationstockage';
 import { BonProvider } from '../providers/bon/bon';
 import { BonPage } from '../pages/bon/bon';
+import {NouveauInventaireComponent} from '../components/nouveau-inventaire/nouveau-inventaire'
+
 
 
 @NgModule({
@@ -51,12 +55,22 @@ import { BonPage } from '../pages/bon/bon';
     SituationMagasinPage,
     ScrollableTabs,
     BonPage,
+    PopoverPage,
+    NouveauInventaireComponent,
+    PopoverPage2,
   ],
   imports: [ 
     BrowserModule,
     HttpClientModule,
     HttpModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp,{
+      menuType: 'push',
+      platforms: {
+        ios: {
+          menuType: 'overlay',
+        }
+      }
+    }),
     ModalPageModule,
 
   ],
@@ -75,6 +89,9 @@ import { BonPage } from '../pages/bon/bon';
     SituationMagasinPage,
     TransportPage,
     BonPage,
+    PopoverPage,
+    NouveauInventaireComponent,
+    PopoverPage2,
 
   ],
   providers: [

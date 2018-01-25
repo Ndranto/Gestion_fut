@@ -28,4 +28,16 @@ export class InventaireProvider {
        });
      });
 }
+getCaracteristique(){
+  return new Promise(resolve => {
+     this.http.get(this.baseUrl+'Jax-rs_Gestion_Fut/type')
+  
+     .subscribe(data => {
+       resolve(data);
+       console.log("ok");
+     }, err => {
+       alert("err");
+     });
+   });
+}
 }

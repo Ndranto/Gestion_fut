@@ -7,7 +7,7 @@
 <ion-header>
   
     <ion-navbar>
-      <ion-title>ModalPage</ion-title>
+      <ion-title>Modification</ion-title>
       <ion-buttons end>
         <button ion-button (click)="closeModal()">Close</button>
       </ion-buttons>
@@ -15,19 +15,28 @@
   
   </ion-header>
   <ion-content>
-  <ion-card-content>
+  <ion-card-content  *ngFor="let catalogue of details">
     <form [formGroup]="Modify" (ngSubmit)="Modification()">
         <ion-item>
+            <ion-label>Identifiant</ion-label>
+            <ion-input  type="text" [value]="catalogue.futId"  formControlName="futId" ></ion-input>
+        </ion-item>
+        <ion-item>
           <ion-label>Nom du fut</ion-label>
-          <ion-input  type="text" value="" formControlName="futNomCatalogueFut"></ion-input>
+          <ion-input  type="text" [value]="catalogue.futNomCatalogueFut" formControlName="futNomCatalogueFut" ></ion-input>
         </ion-item>
         <ion-item>
           <ion-label>Description du fut</ion-label>
-          <ion-textarea formControlName="futDescrCatalogueFut"></ion-textarea>
+          <ion-textarea [value]="catalogue.futDescrCatalogueFut" formControlName="futDescrCatalogueFut"></ion-textarea>
         </ion-item>
-        <button ion-button type="submit" >Valider</button>
+        <button ion-button type="submit" [disabled]="!Modify.valid">Valider</button>
         <button ion-button type="danger">Cancel</button>
       </form>
+      <ion-card ng-if="postlist.response != null">
+          <ion-card-content >
+             <b>{{postList.response}}</b>
+          </ion-card-content>
+      </ion-card>
      
   </ion-card-content>
   </ion-content>

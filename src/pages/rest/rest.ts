@@ -69,39 +69,34 @@ export class RestPage   {
 
   /*Modication du fut à partir du  ModalPage*/ 
   public openModal(value : any){
-
     alert(value);
-
-
-
-    this.restfutProvider.getProductById(value).then(data=>
-      {this.details = data;
-      alert(data)
-      }
-      );  
-
     const myModalOptions: ModalOptions = {
       enableBackdropDismiss: false
     };
-
     const myModalData = {
       name: 'Paul Halliday',
       occupation: 'Developer'
     };
 
-    const myModal: Modal = this.modal.create('ModalPage', { data: this.details }, myModalOptions);
-
+    this.restfutProvider.getProductById(value).then(data=>
+      {
+    this.details = data;
+    let myModal: Modal = this.modal.create('ModalPage', { data: this.details }, myModalOptions);
     myModal.present();
 
     myModal.onDidDismiss((data) => {
       console.log("I have dismissed.");
-      console.log(data);
+
     });
 
     myModal.onWillDismiss((data) => {
       console.log("I'm about to dismiss");
-      console.log(data);
     });
+      }
+      );  
+
+    
+
     }    
     
 }

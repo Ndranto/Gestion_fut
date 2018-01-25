@@ -17,11 +17,13 @@ import {Validators, FormBuilder, FormGroup} from '@angular/forms'
 export class ModalPage {
   details:any;
   private Modify : FormGroup;
+  postList: any = {};
   constructor(public navCtrl: NavController, public navParams: NavParams
     , public ViewCrtl :  ViewController,
     public restfutProvider: RestfutProvider, public formBuilder : FormBuilder) {
-
+   // console.log( console.log(navParams.get('data')));
     this.Modify = this.formBuilder.group({
+      futId:[''],
       futNomCatalogueFut: ['', Validators.required],
       futDescrCatalogueFut: [''],
     });
@@ -29,9 +31,10 @@ export class ModalPage {
   }
 
   ionViewDidLoad() {
-    let data = this.navParams.get('data');
-    console.log(data);
+   this.details = this.navParams.get('data');
+   // alert(this.details);
   }
+
   closeModal() {
     const data = {
       name: 'John Doe',
@@ -41,6 +44,14 @@ export class ModalPage {
   }
   Modification()
   {
-     
- }
+     console.log(this.Modify);
+     this.restfutProvider.updateProduct(this.Modify)
+     .then(data => 
+      {  this.postList.response = data;
+       
+        console.log(data);}).catch(error => {
+        console.log(error.status);
+      });
+   }
+ 
 }
