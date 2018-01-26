@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import {RestfutProvider} from '../../providers/restfut/restfut';
 import {BonProvider} from '../../providers/bon/bon'
-import {Validators, FormGroup, FormBuilder } from '@angular/forms';
+import {Validators, FormGroup, FormBuilder ,FormControl} from '@angular/forms';
 import {ViewController, PopoverController } from 'ionic-angular';
 import { NavController } from 'ionic-angular/navigation/nav-controller';
 import { NavParams } from 'ionic-angular/navigation/nav-params';
+import { AjoutFutBonComponent } from '../ajout-fut-bon/ajout-fut-bon';
 
 
 /**
@@ -19,25 +20,26 @@ import { NavParams } from 'ionic-angular/navigation/nav-params';
 })
 export class NouveauInventaireComponent {
 
-  text: string;
+ public evenement:string;
    fut :any;
-
    private Bon : FormGroup;
-
    type2 :  any;
-   postList : any;
-   
-  constructor(public catalogue : RestfutProvider,public inventaireService : BonProvider, public formBuilder:FormBuilder, public bonService : BonProvider, public popoverCtrl:PopoverController,public navParams :NavParams) {
-  
-    this.getCaracteristique();
-   this.Bon = this.formBuilder.group({
-      BonNum: ['', Validators.required],
-      StockName: ['',  Validators.required],
-      CliName: ['',  Validators.required],
-      DateLivraison: ['',  Validators.required],
-      caractere: ['',  Validators.required],
-    });
-  
+   public postReponse: any  = {};;
+
+  constructor(public catalogue : RestfutProvider,public Bonservice : BonProvider,
+     public formBuilder:FormBuilder, public bonService : BonProvider, 
+     public popoverCtrl:PopoverController,public navParams :NavParams, public nav : NavController,public viewcrtl :ViewController) {
+              this.evenement =this.navParams.get('typeBon');
+              this.getCaracteristique();
+              this.Bon = this.formBuilder.group({
+              refBon: ['', Validators.required],
+              StockName: ['',  Validators.required],
+              clientName: ['',  Validators.required],
+              BonDate: ['',  Validators.required],
+              caractere: ['',  Validators.required],
+              BonValidation:[],
+            });
+          
   }
   
  /*getCatalogue() 
@@ -53,26 +55,41 @@ presentPopover(myEvent) {
     ev: myEvent
   });
 }*/
-getCaracteristique(){
-  this.inventaireService.getListOption()
-  .then(data =>{this.type2 = data;
-  //  this.initializeItems();
-   // loadingPopup.dismiss();
-  });
+          getCaracteristique(){
+            this.Bonservice.getListOption()
+            .then(data =>{this.type2 = data;
+            //  this.initializeItems();
+            // loadingPopup.dismiss();
+            });
 
-}
-Ajout()
-{
+          }
+          Ajout()
+          {
 
-  console.log(this.Bon.value)
-   this.inventaireService.createBon(this.Bon)
-   .then(data => 
-    {  this.postList.response = data;
-      alert(data);}).catch(error => {
-      console.log(error.status);
-    });;
-}
-}
+            console.log(this.Bon.value)
+            this.Bonservice.createBon(this.Bon)
+            .then(data => 
+              {  this.postReponse.response = data;
+                alert(data);
+                this.nav.push(AjoutFutBonComponent,{ typeBon:this.Bon.value});
+                this.viewcrtl.dismiss();
+                }).catch(error => {
+               this.postReponse ="Erreur d'insertion ";
+              });
+          }
+          Validation()
+          {
+            if ( this.Bon.controls['BonValidation'].value ) {
+              (this.Bon.controls['BonValidation']).setValue(true, { onlySelf: false });
+              } else {
+              (this.Bon.controls['BonValidation']).setValue(false, { onlySelf: true });
+              }
+          }
+          
+ }
+  
+  
+
 
 
 

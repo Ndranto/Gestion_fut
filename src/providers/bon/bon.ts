@@ -43,24 +43,20 @@ export class BonProvider {
       
     }
     public createBon(bon: any) {         
-      const body = new HttpParams().set("futNomCatalogueFut", bon.value.futNomCatalogueFut).set("futDescrCatalogueFut", bon.value.futDescrCatalogueFut);
+      const body = new HttpParams().set("BonDate", bon.value.BonDate).set("refBon", bon.value.refBon)
+      .set("BonValidation", bon.value.BonValidation).set("clientName",bon.value.clientName).set("caractere", bon.value.caractere);
       console.log(body);
-   
     //let options = new RequestOptions({ headers: headers });
         return new Promise((resolve) => {
-          this.http.post(this.baseUrl+'Jax-rs_Gestion_Fut/fut/addForm', body.toString(), {headers :new HttpHeaders().set("Content-Type", "application/x-www-form-urlencoded; charset=utf-8"),responseType: 'text'})
+          this.http.post(this.baseUrl+'Jax-rs_Gestion_Fut/Bon/addbon', body.toString(), {headers :new HttpHeaders().set("Content-Type", "application/x-www-form-urlencoded; charset=utf-8"),responseType: 'text'})
           .subscribe(data => {
             resolve(data);
             this.data = data;
-     alert("mety");
+            alert("mety");
          }, (err) => {
               
-              alert(err.data);
-              console.log('Error: ' + err.error);
-              console.log('Name: ' + err.name);
-              console.log('Message: ' + err.message);
-              console.log('Status: ' + err.status);
-              console.log('erreur: ' + err);
+            this.data = "impossible d'ajoutée";
+            console.log(err);
             });
            
         });

@@ -45,7 +45,7 @@ export class MyApp {
     <ion-list>
       <ion-list-header>Nouveau inventaire</ion-list-header>
     
-      <button *ngFor="let T of type" ion-item (click)="NouveauInventaire(T.typeId)">{{T.typeName}}</button>
+      <button *ngFor="let T of type" ion-item (click)="NouveauInventaire(T.typeName)">{{T.typeName}}</button>
       
     </ion-list>
   `
@@ -58,7 +58,8 @@ export class PopoverPage {
   }
 
 NouveauInventaire(value : any) {
-  this.nav.push(NouveauInventaireComponent);
+  
+  this.nav.push(NouveauInventaireComponent,{ typeBon:value});
   this.viewCtrl.dismiss();
   }
   getCaracteristique(){

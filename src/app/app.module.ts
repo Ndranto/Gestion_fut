@@ -35,7 +35,8 @@ import { ClientProvider } from '../providers/client/client';
 import { SituationstockageProvider } from '../providers/situationstockage/situationstockage';
 import { BonProvider } from '../providers/bon/bon';
 import { BonPage } from '../pages/bon/bon';
-import {NouveauInventaireComponent} from '../components/nouveau-inventaire/nouveau-inventaire'
+import {NouveauInventaireComponent} from '../components/nouveau-inventaire/nouveau-inventaire';
+import {AjoutFutBonComponent} from '../components/ajout-fut-bon/ajout-fut-bon';
 
 
 
@@ -58,6 +59,7 @@ import {NouveauInventaireComponent} from '../components/nouveau-inventaire/nouve
     PopoverPage,
     NouveauInventaireComponent,
     PopoverPage2,
+    AjoutFutBonComponent,
   ],
   imports: [ 
     BrowserModule,
@@ -92,6 +94,7 @@ import {NouveauInventaireComponent} from '../components/nouveau-inventaire/nouve
     PopoverPage,
     NouveauInventaireComponent,
     PopoverPage2,
+    AjoutFutBonComponent,
 
   ],
   providers: [

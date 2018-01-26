@@ -21,7 +21,11 @@
      </ion-header>
 <ion-content padding> 
 
-      <form [formGroup]="Bon" (ngSubmit)="Livraison()">
+    <h2 center>{{evenement}}</h2>
+
+      <form [formGroup]="Bon" (ngSubmit)="Ajout()">
+          
+   
             <ion-list-header>
                 Bon  Entrer
                <button type="submit" [disabled]="!Bon.valid"  ion-button color="secondary" clear item-right >Suivant
@@ -32,39 +36,71 @@
                 </button>
               </ion-list-header>
         
-                  
-                  <ion-item>
-                      <ion-label color="primary" floating >Numero du Bon de livraison</ion-label>
-                     <ion-input type="text" formControlName="BonNum" ></ion-input>>
+              <ion-item>
+                  <ion-label>valider</ion-label>
+                  <ion-toggle (ionChange)="Validation()"  formControlName="BonValidation"  ></ion-toggle>
                 </ion-item>
+             <ion-item>
+               <ion-label color="primary" floating >Numero du Bon de livraison</ion-label>
+              <ion-input type="text" formControlName="refBon" ></ion-input>
+                   
+             </ion-item>
               <ion-item>
                   <ion-icon name="calendar" item-start></ion-icon>
                  <ion-label color="primary" floating>Date</ion-label>
-                 <ion-datetime type ="date "displayFormat="DD/MM/YYYY" [(ngModel)]="myDate" formControlName="DateLivraison"  ></ion-datetime>
+                 <ion-datetime type ="date "displayFormat="DD/MM/YYYY" [(ngModel)]="myDate" formControlName="BonDate"  ></ion-datetime>
               </ion-item>
+
           
               <ion-item>
                   <ion-icon name="home" item-start></ion-icon>
                   <ion-label color="primary"  floating>Magasin</ion-label>
                   <ion-input   type="text " formControlName="StockName"></ion-input>
+                  <button  ion-button color="secondary" clear item-right >Nouveau </button>
               </ion-item>
-                <ion-item>
+              <ion-item>
                     <ion-icon ios="ios-contacts" md="md-contacts" item-start></ion-icon>
                     <ion-label color="primary" floating>Fournisseur</ion-label>
-                    <ion-input type="text"  formControlName="CliName" ></ion-input>
-                </ion-item>
+                    <ion-input type="text"  formControlName="clientName" ></ion-input>
+                    <button  ion-button color="secondary" clear item-right >Nouveau </button>
+              </ion-item>
                  
                           
-                            <ion-item >
-                        
-                              <ion-select ngIF="type2 !=null"color="primary" interface="popover" formControlName="caractere">
-                                <ion-option *ngFor="let T of type2"  [value]="T.caraNom">{{T.caraNom}}</ion-option>
-                              </ion-select>
-                            </ion-item>
+              <ion-item >
+                    <ion-select ngIF="type2 !=null"color="primary" interface="popover" formControlName="caractere">
+                     <ion-option *ngFor="let T of type2"  [value]="T.caraNom">{{T.caraNom}}</ion-option>
+                    </ion-select>
+               </ion-item>
                               
              
        </form>
-       
+         <ion-card Style="background-color:darkcyan" >
+           <ion-card-header>
+           <h2 color="danger">
+             Information
+           </h2>
+          </ion-card-header>
+        
+           <ion-grid>
+             <ion-row>
+               <ion-col>
+                 <ion-list>
+                   <ion-label>Quantité fut du stockage </ion-label>
+                   <ion-label>Nombre Total du fut au client </ion-label>
+                   <ion-label>Nombre à rendre </ion-label>
+                 </ion-list>
+               </ion-col>
+               <ion-col>
+                <ion-list>
+                  <ion-label>5</ion-label>
+                  <ion-label>6 </ion-label>
+                  <ion-label>7</ion-label>
+                </ion-list>
+              </ion-col>
+             </ion-row>
+           </ion-grid>
+        
+         </ion-card>
                 
     <!--  <ion-item>
         <ion-label>Type</ion-label>
@@ -84,7 +120,11 @@
                 </ion-grid>
                 </ion-item>
     -->
-  
+    <ion-card>
+        <ion-card-content ng-if="postReponse.response != null">
+          <b>{{postReponse.response}}</b>
+          </ion-card-content>
+    </ion-card>
 
 
 </ion-content>
