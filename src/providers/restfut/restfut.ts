@@ -6,11 +6,6 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toPromise';
 
-
-
-
-
-
 /*
   Generated class for the RestfutProvider provider.
 
@@ -37,7 +32,6 @@ CatalogueFut :any;
     return new Promise(resolve => {
       this.http.get(this.baseUrl+'Jax-rs_Gestion_Fut/fut/Listfut').subscribe(data => {
         resolve(data);
-        alert("mety");
       }, err => {
         alert(err);
       });
@@ -75,9 +69,10 @@ CatalogueFut :any;
 
   // Sending a GET request to /products/:id
   public getProductById(productId: any) {
-  alert(productId);
+  console.log(productId);
     return new Promise(resolve => {
-      this.http.get(this.baseUrl+'Jax-rs_Gestion_Fut/fut/idFut/'+productId+'').subscribe(data => {
+      this.http.get(this.baseUrl+'Jax-rs_Gestion_Fut/fut/idFut/'+productId+'')
+      .subscribe(data => {
         resolve(data);
       
       }, err => {

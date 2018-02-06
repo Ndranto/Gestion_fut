@@ -52,7 +52,7 @@ export class BonProvider {
           .subscribe(data => {
             resolve(data);
             this.data = data;
-            alert("mety");
+           
          }, (err) => {
               
             this.data = "impossible d'ajoutée";

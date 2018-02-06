@@ -5,15 +5,15 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { TabsPage } from '../pages/tabs/tabs';
 import {InventaireProvider} from '../providers/inventaire/inventaire'
 import {NouveauInventaireComponent} from '../components/nouveau-inventaire/nouveau-inventaire';
+import { LoginPage } from '../pages/login/login';
 @Component({
   templateUrl: 'app.html'
 
 })
 export class MyApp {
  // @ViewChild('sectionSelect') sectionSelect: Select;
-  rootPage:any = TabsPage;
+  rootPage:any = LoginPage;
   page:any =[];
-
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,public menuCtrl: MenuController, public popoverCtrl:PopoverController) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -38,6 +38,8 @@ export class MyApp {
   });
 }
   
+
+
 }
 
 @Component({
@@ -70,4 +72,6 @@ NouveauInventaire(value : any) {
     });
   
   }
+
+
 }

@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import {RestfutProvider} from '../../providers/restfut/restfut';
 import {BonProvider} from '../../providers/bon/bon'
-import {Validators, FormGroup, FormBuilder ,FormControl} from '@angular/forms';
-import {ViewController, PopoverController } from 'ionic-angular';
+import {Validators, FormGroup, FormBuilder } from '@angular/forms';
+import {App,ViewController, PopoverController } from 'ionic-angular';
 import { NavController } from 'ionic-angular/navigation/nav-controller';
 import { NavParams } from 'ionic-angular/navigation/nav-params';
 import { AjoutFutBonComponent } from '../ajout-fut-bon/ajout-fut-bon';
+import{ClientProvider} from '../../providers/client/client';
+import{MagasinStockageProvider} from '../../providers/magasin-stockage/magasin-stockage'
 
 
 /**
@@ -24,13 +26,19 @@ export class NouveauInventaireComponent {
    fut :any;
    private Bon : FormGroup;
    type2 :  any;
-   public postReponse: any  = {};;
+   Client :any;
+   magasin : any;
+   public postReponse: any  = {};
+  
 
   constructor(public catalogue : RestfutProvider,public Bonservice : BonProvider,
      public formBuilder:FormBuilder, public bonService : BonProvider, 
-     public popoverCtrl:PopoverController,public navParams :NavParams, public nav : NavController,public viewcrtl :ViewController) {
+     public popoverCtrl:PopoverController,public navParams :NavParams, public navCrtl : NavController,public viewcrtl :ViewController,
+     public _clientProvider:ClientProvider, public _stockageService: MagasinStockageProvider,public appCtrl: App ) {
               this.evenement =this.navParams.get('typeBon');
               this.getCaracteristique();
+              this.sowClientName();
+              this.ShowStockName();
               this.Bon = this.formBuilder.group({
               refBon: ['', Validators.required],
               StockName: ['',  Validators.required],
@@ -39,6 +47,7 @@ export class NouveauInventaireComponent {
               caractere: ['',  Validators.required],
               BonValidation:[],
             });
+            
           
   }
   
@@ -65,17 +74,23 @@ presentPopover(myEvent) {
           }
           Ajout()
           {
-
-            console.log(this.Bon.value)
+          
+            this.navCrtl.push(AjoutFutBonComponent,{ typeBon:this.Bon.value}).then(() => {
+              const startIndex = this.navCrtl.getActive().index - 2;
+              this.navCrtl.remove(startIndex, 2);
+            });
+          
+          /*  console.log(this.Bon.value)
             this.Bonservice.createBon(this.Bon)
             .then(data => 
               {  this.postReponse.response = data;
-                alert(data);
-                this.nav.push(AjoutFutBonComponent,{ typeBon:this.Bon.value});
-                this.viewcrtl.dismiss();
+                
+               
                 }).catch(error => {
                this.postReponse ="Erreur d'insertion ";
               });
+            
+              */
           }
           Validation()
           {
@@ -85,6 +100,26 @@ presentPopover(myEvent) {
               (this.Bon.controls['BonValidation']).setValue(false, { onlySelf: true });
               }
           }
+          
+         
+         sowClientName()
+         {
+          this._clientProvider.getListClient()
+          .then(data =>
+            {
+              this.Client = data;  
+          //  this.initializeItems();
+          // loadingPopup.dismiss();
+          });
+
+         }
+         ShowStockName()
+         {
+              this._stockageService.getListStockage()
+              .then(data=>
+                {
+              this.magasin = data});
+         }
           
  }
   

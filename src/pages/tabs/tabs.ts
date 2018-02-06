@@ -1,5 +1,5 @@
 import { Component  } from '@angular/core';
-import { ToastController } from 'ionic-angular';
+import { ToastController,Platform,MenuController,PopoverController,ViewController, NavController,NavParams } from 'ionic-angular';
 import { AboutPage } from '../about/about';
 import { ContactPage } from '../contact/contact';
 import { HomePage } from '../home/home';
@@ -11,6 +11,7 @@ import {MagasinPage} from '../magasin/magasin';
 import {TransportPage} from '../transport/transport';
 import {InventairePage} from '../inventaire/inventaire';
 import {BonPage} from '../bon/bon';
+import{PopoverPage} from '../../app/app.component';
 
 @Component({
   templateUrl: 'tabs.html'
@@ -25,11 +26,10 @@ export class TabsPage {
   TransportPage: any =TransportPage;
   Inventaire: any = InventairePage;
   bonpage: any = BonPage;
-
   tabsColor: string = "default";
   tabsMode: string = "md";
   tabsPlacement: string = "top";
-
+  myIndex :Number;
   tabToShow: Array<boolean> = [true, true, true, true, true, true, true, true, true];
   scrollableTabsopts: any = {};
 /*
@@ -38,8 +38,8 @@ export class TabsPage {
   tab3Root = ContactPage;
   tab4Root = LoginPage;
 */
-  constructor(public toastCtrl: ToastController) {
-
+  constructor(public toastCtrl: ToastController,public menuCtrl: MenuController, public popoverCtrl:PopoverController,public navParams:NavParams) {
+    this.myIndex = navParams.data.tabIndex || 0;
   }
 
   refreshScrollbarTabs() {
@@ -59,4 +59,18 @@ export class TabsPage {
 
     toast.present();
   }
+  openToggle() {
+    console.log("mety");
+    this.menuCtrl.open();
+  }
+  /*doFilter(){
+    this.sectionSelect.open();
+    console.log('hello')
+ }*/
+ presentPopover(myEvent) {
+  let popover = this.popoverCtrl.create(PopoverPage);
+  popover.present({
+    ev: myEvent
+  });
+}
 }

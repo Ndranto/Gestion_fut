@@ -8,14 +8,20 @@
   <ion-searchbar (ionInput)="getItems($event)" [debounce]="500" placeholder="Suchen..."></ion-searchbar>
 </ion-header>
 <ion-content>
-  <ion-list padding>
-    <h1>Catalogue des Futs</h1>
-    <ion-item *ngFor="let cat of stockage">
-      <h2>{{cat.stockId}}</h2>  
-      <li>{{cat.stockDescrStockage}}</li> 
-      <li>{{cat.stockLieuStockage}}</li> 
-      <li>{{cat.stockSolde}}</li> 
-      <li>{{cat.ville.villeNameVille}}</li> 
-    </ion-item>
-  </ion-list>
+  <ion-card *ngFor="let s of stockageList">
+    <ion-list  >
+    <ion-item>
+        <h2>{{s.stockDescrStockage}}</h2>
+        <p>{{s.stockLieuStockage}}</p>
+        <button (click)="openModal(s.stockId)"  ion-button color="danger" outline item-end icon-left name="Modification">
+            <ion-icon name="edit"></ion-icon>
+           Modifier
+          </button>
+        <button (click) = "openModal()"ion-button outline  color ="secondary"item-end icon-left >
+            <ion-icon name="information"></ion-icon>
+          Details
+        </button>
+        </ion-item>
+      </ion-list>
+  </ion-card>
 </ion-content>

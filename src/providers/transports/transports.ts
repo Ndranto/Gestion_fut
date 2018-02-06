@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Console } from '@angular/core/src/console';
+
 
 /*
   Generated class for the TransportsProvider provider.

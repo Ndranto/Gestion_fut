@@ -1,0 +1,47 @@
+<!--
+  Generated template for the FormulaireStockagePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<!--
+  Generated template for the ModalPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar>
+      <ion-title></ion-title>
+      <ion-buttons end>
+        <button ion-button (click)="closeModal()">Close</button>
+      </ion-buttons>
+    </ion-navbar>
+  
+  </ion-header>
+  <ion-content>
+  <ion-card-content  *ngFor="let stock of stockageId">
+    <form [formGroup]="Modify" (ngSubmit)="Modification()">
+        <ion-item>
+            <ion-label>Id</ion-label>
+            <ion-input  type="text" [value]="stock.stockId"  formControlName="StcokId" ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>nom du stockage</ion-label>
+          <ion-input  type="text" [value]="stock.stockLieuStockage" formControlName="stockLieuStockage" ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Description du stockage</ion-label>
+          <ion-textarea [value]="stock.stockDescrStockage" formControlName="stockDescrStockage"></ion-textarea>
+        </ion-item>
+        <button ion-button type="submit" [disabled]="!Modify.valid">Valider</button>
+        <button ion-button type="danger">Cancel</button>
+      </form>
+      <ion-card ng-if="postlist.response != null">
+          <ion-card-content >
+             <b>{{postList.response}}</b>
+          </ion-card-content>
+      </ion-card>
+     
+  </ion-card-content>
+  </ion-content>

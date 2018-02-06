@@ -37,8 +37,10 @@ import { BonProvider } from '../providers/bon/bon';
 import { BonPage } from '../pages/bon/bon';
 import {NouveauInventaireComponent} from '../components/nouveau-inventaire/nouveau-inventaire';
 import {AjoutFutBonComponent} from '../components/ajout-fut-bon/ajout-fut-bon';
-
-
+import {FormulaireStockagePageModule} from '../pages/formulaire-stockage/formulaire-stockage.module';
+import{MenuPageModule} from '../pages/menu/menu.module';
+import {IonTagsInputModule} from "ionic-tags-input";
+import { AutoCompleteModule } from 'ionic2-auto-complete';
 
 @NgModule({
   declarations: [
@@ -60,6 +62,8 @@ import {AjoutFutBonComponent} from '../components/ajout-fut-bon/ajout-fut-bon';
     NouveauInventaireComponent,
     PopoverPage2,
     AjoutFutBonComponent,
+    
+    
   ],
   imports: [ 
     BrowserModule,
@@ -74,6 +78,10 @@ import {AjoutFutBonComponent} from '../components/ajout-fut-bon/ajout-fut-bon';
       }
     }),
     ModalPageModule,
+    FormulaireStockagePageModule,
+    MenuPageModule,
+    IonTagsInputModule,
+    AutoCompleteModule
 
   ],
   bootstrap: [IonicApp],
@@ -95,6 +103,7 @@ import {AjoutFutBonComponent} from '../components/ajout-fut-bon/ajout-fut-bon';
     NouveauInventaireComponent,
     PopoverPage2,
     AjoutFutBonComponent,
+  
 
   ],
   providers: [

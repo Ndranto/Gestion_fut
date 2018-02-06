@@ -15,12 +15,9 @@ export class MagasinStockageProvider {
     console.log('Hello MagasinStockageProvider Provider');
   }
   baseUrl: string = 'http://192.168.1.114:8081/';
-  getListCatalogue(){
-    
- 
+  getListStockage(){
      return new Promise(resolve => {
        this.http.get(this.baseUrl+'Jax-rs_Gestion_Fut/Stockage/ListStockage')
-    
        .subscribe(data => {
          resolve(data);
          alert(data);
@@ -30,4 +27,16 @@ export class MagasinStockageProvider {
      });
       
 }
+ // Sending a GET request to /Stockage/:id
+ public getStockageID(stockageId: any) {
+ 
+    return new Promise(resolve => {
+      this.http.get(this.baseUrl+'Jax-rs_Gestion_Fut/Stockage/stockId/'+stockageId+'')
+        .subscribe(data => {
+        resolve(data);
+      }, err => {
+        alert(err);
+      });
+    });
+  }
 }

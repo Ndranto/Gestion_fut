@@ -7,6 +7,7 @@
 
 
 
+     <ion-content>
 <ion-tabs  #ionTabs [scrollable-tabs]="ionTabs" [opts]="scrollableTabsopts" selectedIndex='0' color="{{tabsColor}}" mode='{{tabsMode}}'tabsHighlight="true" tabsPlacement="{{tabsPlacement}}">
   <ion-tab [root]="HomePage" [show]='tabToShow[0]'  tabTitle="Home" tabIcon="home"></ion-tab>
   <ion-tab [root]="ClientPage" [show]='tabToShow[1]' tabTitle="Client" tabIcon="information-circle"></ion-tab>
@@ -18,6 +19,7 @@
   <ion-tab [root]="RestPage" [show]='tabToShow[7]' tabTitle="Catalogue" tabIcon="contacts"></ion-tab>
 </ion-tabs>
 
+</ion-content>
 
 <!--<ion-list [style.marginTop.px]="200">
   <ion-item>

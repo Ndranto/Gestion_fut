@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams , Platform, ModalController, ViewController,Modal,  ModalOptions } from 'ionic-angular';
-import { HttpClient , HttpParams} from '@angular/common/http';
+import { IonicPage, NavController, NavParams , Platform, ModalController,Modal,  ModalOptions } from 'ionic-angular';
+import { HttpClient } from '@angular/common/http';
 import {RestfutProvider} from'../../providers/restfut/restfut'
-import { Placeholder } from '@angular/compiler/src/i18n/i18n_ast';
 import {Validators, FormBuilder, FormGroup} from '@angular/forms'
 
 /**
@@ -15,7 +14,7 @@ import {Validators, FormBuilder, FormGroup} from '@angular/forms'
 @IonicPage()
 @Component({
   selector: 'page-rest',
-  templateUrl:  'rest.html'
+  templateUrl:'rest.html'
 })
 export class RestPage   {
   private todo : FormGroup;
@@ -73,10 +72,7 @@ export class RestPage   {
     const myModalOptions: ModalOptions = {
       enableBackdropDismiss: false
     };
-    const myModalData = {
-      name: 'Paul Halliday',
-      occupation: 'Developer'
-    };
+ 
 
     this.restfutProvider.getProductById(value).then(data=>
       {

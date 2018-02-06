@@ -28,18 +28,24 @@
    
             <ion-list-header>
                 Bon  Entrer
-               <button type="submit" [disabled]="!Bon.valid"  ion-button color="secondary" clear item-right >Suivant
+               <button type="submit"  ion-button color="secondary"  item-right >Suivant
                  <ion-icon ios="ios-arrow-forward" md="md-arrow-forward" item-end></ion-icon>
                </button>
-               <button  ion-button color="danger" clear item-left >Annuler
+               <button  ion-button color="danger" [disabled]="!Bon.valid"   item-left >Annuler
                   <ion-icon ios="ios-close" md="md-close" item-end></ion-icon>
                 </button>
               </ion-list-header>
         
               <ion-item>
-                  <ion-label>valider</ion-label>
+                  
+                  <ion-label>valider
+                      <p>Vous devez activer si votre bon de livraison est déjà livré</p>
+                  </ion-label>
+                  
                   <ion-toggle (ionChange)="Validation()"  formControlName="BonValidation"  ></ion-toggle>
                 </ion-item>
+                
+                
              <ion-item>
                <ion-label color="primary" floating >Numero du Bon de livraison</ion-label>
               <ion-input type="text" formControlName="refBon" ></ion-input>
@@ -52,21 +58,38 @@
               </ion-item>
 
           
-              <ion-item>
+           <!--   <ion-item>
                   <ion-icon name="home" item-start></ion-icon>
                   <ion-label color="primary"  floating>Magasin</ion-label>
                   <ion-input   type="text " formControlName="StockName"></ion-input>
                   <button  ion-button color="secondary" clear item-right >Nouveau </button>
-              </ion-item>
+              </ion-item>-->
               <ion-item>
+                  <ion-icon name="home" item-start></ion-icon>
+                <ion-label floating color="primary">Magasin</ion-label>
+                 <ion-select ngIF="magasin !=null"color="primary" interface="popover" formControlName="StockName">
+                 <ion-option *ngFor="let T of magasin"  [value]="T.stockLieuStockage">{{T.stockLieuStockage}}</ion-option>
+                </ion-select>
+           </ion-item>
+              <ion-item>
+                  <ion-icon ios="ios-contacts" md="md-contacts" item-start></ion-icon>
+                <ion-label floating color="primary">Client</ion-label>
+                 <ion-select ngIF="Client !=null"color="primary" interface="popover" formControlName="clientName">
+                 <ion-option *ngFor="let T of Client"  [value]="T.cliNom">{{T.cliNom}}</ion-option>
+                </ion-select>
+           </ion-item>
+             <!-- <ion-item>
                     <ion-icon ios="ios-contacts" md="md-contacts" item-start></ion-icon>
                     <ion-label color="primary" floating>Fournisseur</ion-label>
-                    <ion-input type="text"  formControlName="clientName" ></ion-input>
+                    <ion-input type="text" [(ngModel)]="name"  (ionInput) ="sowClientName($event)" formControlName="clientName" ></ion-input>
+                  
                     <button  ion-button color="secondary" clear item-right >Nouveau </button>
               </ion-item>
-                 
+            -->
                           
               <ion-item >
+                  <ion-icon name="home" item-start></ion-icon>
+                  <ion-label floating color="primary">Type Inventaire</ion-label>
                     <ion-select ngIF="type2 !=null"color="primary" interface="popover" formControlName="caractere">
                      <ion-option *ngFor="let T of type2"  [value]="T.caraNom">{{T.caraNom}}</ion-option>
                     </ion-select>
