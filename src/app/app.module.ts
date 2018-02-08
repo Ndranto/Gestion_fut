@@ -37,6 +37,7 @@ import { BonProvider } from '../providers/bon/bon';
 import { BonPage } from '../pages/bon/bon';
 import {NouveauInventaireComponent} from '../components/nouveau-inventaire/nouveau-inventaire';
 import {AjoutFutBonComponent} from '../components/ajout-fut-bon/ajout-fut-bon';
+import{DetailfutComponent} from '../components/detailfut/detailfut'
 import {FormulaireStockagePageModule} from '../pages/formulaire-stockage/formulaire-stockage.module';
 import{MenuPageModule} from '../pages/menu/menu.module';
 import {IonTagsInputModule} from "ionic-tags-input";
@@ -62,6 +63,8 @@ import { AutoCompleteModule } from 'ionic2-auto-complete';
     NouveauInventaireComponent,
     PopoverPage2,
     AjoutFutBonComponent,
+    DetailfutComponent
+  
     
     
   ],
@@ -103,6 +106,7 @@ import { AutoCompleteModule } from 'ionic2-auto-complete';
     NouveauInventaireComponent,
     PopoverPage2,
     AjoutFutBonComponent,
+    DetailfutComponent,
   
 
   ],

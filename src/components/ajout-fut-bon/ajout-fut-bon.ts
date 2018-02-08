@@ -52,7 +52,7 @@ export class AjoutFutBonComponent implements AutoCompleteService{
           });
     }
     isNumeric(ev:any )
-    {
+    { console.log(ev.target.value);
       const pattern = /[0-9\+\-\ ]/;
       let inputChar = String.fromCharCode(ev.charCode);
       if (!pattern.test(inputChar)) {

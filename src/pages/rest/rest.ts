@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams , Platform, ModalController,Modal,  ModalOptions } from 'ionic-angular';
+import { IonicPage, NavController, NavParams , Platform, ModalController,Modal,  ModalOptions ,ViewController,App} from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import {RestfutProvider} from'../../providers/restfut/restfut'
 import {Validators, FormBuilder, FormGroup} from '@angular/forms'
+import { DetailfutComponent } from '../../components/detailfut/detailfut';
 
 /**
  * Generated class for the RestPage page.
@@ -23,9 +24,10 @@ export class RestPage   {
   isAndroid: boolean = false;
   pet: string = "puppies";
   postList: any = {};
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient
+  constructor(public navCtrl: NavController, public navParams: NavParams
               ,public restfutProvider:RestfutProvider, public platform :Platform,
-               public formBuilder :FormBuilder, public modal :  ModalController) {
+               public formBuilder :FormBuilder, public modal :  ModalController
+               ,public viewCtrl :ViewController,  public appCtrl: App) {
 
    this. getCatalogueFit();
    this.todo = this.formBuilder.group({
@@ -69,31 +71,25 @@ export class RestPage   {
   /*Modication du fut à partir du  ModalPage*/ 
   public openModal(value : any){
     alert(value);
-    const myModalOptions: ModalOptions = {
+   const myModalOptions: ModalOptions = 
+    {
       enableBackdropDismiss: false
     };
- 
-
     this.restfutProvider.getProductById(value).then(data=>
-      {
-    this.details = data;
-    let myModal: Modal = this.modal.create('ModalPage', { data: this.details }, myModalOptions);
-    myModal.present();
+        {
+          this.details = data;
+          let myModal: Modal = this.modal.create('ModalPage', { data: this.details }, myModalOptions);
+          myModal.present();
 
-    myModal.onDidDismiss((data) => {
-      console.log("I have dismissed.");
-
-    });
-
-    myModal.onWillDismiss((data) => {
-      console.log("I'm about to dismiss");
-    });
+          myModal.onDidDismiss((data) => {console.log("I have dismissed.");});
+          myModal.onWillDismiss((data) => {console.log("I'm about to dismiss");   });      
+        });
+   }    
+    Details(value , event) {
+      let btnid = event.target.name ;
+      this.appCtrl.getRootNav().push(DetailfutComponent,{idFut:value , etatFut:btnid});
+   
       }
-      );  
-
-    
-
-    }    
     
 }
 

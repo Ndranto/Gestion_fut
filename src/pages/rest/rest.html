@@ -66,10 +66,18 @@
                 <ion-icon name="edit"></ion-icon>
                Modifier
               </button>
-            <button (click) = "openModal()"ion-button outline  color ="secondary"item-end icon-left >
+            <button (click) = "Details(cat.futId,$event)"ion-button outline name="false"  color ="dark"item-end icon-left >
                 <ion-icon name="information"></ion-icon>
-              Details
+                Details vide
             </button>
+            <button (click) = "Details(cat.futId,$event)"ion-button outline  name="true"  color ="dark"item-end icon-left >
+              <ion-icon name="information"></ion-icon>
+               Details plein
+          </button>
+          <button (click) = "Details(cat.futId,$event)"ion-button outline  name=" " color ="dark"item-end icon-left >
+            <ion-icon name="information"></ion-icon>
+             Situation général
+        </button>
             </ion-item>
           </ion-list>
       </ion-card>
